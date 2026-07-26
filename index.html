@@ -1,0 +1,737 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="TOXIC BITE - The taste you'll never forget. Premium sandwiches, crispy meals and loaded fries."/>
+<meta property="og:title" content="TOXIC BITE - The Taste You'll Never Forget"/>
+<meta property="og:description" content="Premium sandwiches, crispy meals and loaded fries. Order now on WhatsApp."/>
+<meta property="og:image" content="https://i.imgur.com/OeaYUZh.jpeg"/>
+<link rel="icon" href="https://i.imgur.com/OeaYUZh.jpeg" type="image/jpeg"/>
+<title>TOXIC BITE — The Taste You'll Never Forget</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===========================
+   TOXIC BITE — Premium Styles
+   Palette extracted from logo:
+   --cream #F6EBD1  (background cream)
+   --orange #F4A61C (bun)
+   --red #C0392B (tomato/red)
+   --green #7CB342 (lettuce)
+   --brown #6B3410 (patty)
+   --black #0E0E10 (skull/bones)
+   =========================== */
+:root{
+  --cream:#F6EBD1;
+  --orange:#F4A61C;
+  --red:#C0392B;
+  --green:#7CB342;
+  --brown:#6B3410;
+  --black:#0E0E10;
+  --dark:#141216;
+  --dark2:#1c1a1f;
+  --text:#F6EBD1;
+  --muted:#c9bfa8;
+  --glow:rgba(244,166,28,.55);
+  --grad: linear-gradient(135deg,var(--orange),var(--red));
+  --grad2: linear-gradient(135deg,var(--green),var(--orange));
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--dark);
+  color:var(--text);
+  overflow-x:hidden;
+  cursor:none;
+}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:none;border:none;background:none;color:inherit}
+
+/* ---------- Custom Cursor ---------- */
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%);transition:transform .2s ease, background .2s ease, width .2s, height .2s}
+.cursor-dot{width:8px;height:8px;background:var(--orange);box-shadow:0 0 15px var(--orange)}
+.cursor-ring{width:38px;height:38px;border:2px solid var(--orange);opacity:.7;transition:transform .15s ease-out}
+.cursor-ring.hover{width:60px;height:60px;background:rgba(244,166,28,.15);border-color:var(--red)}
+@media (max-width:768px){body{cursor:auto}.cursor-dot,.cursor-ring{display:none} button,a{cursor:pointer!important}}
+
+/* ---------- Loader ---------- */
+#loader{position:fixed;inset:0;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99999;transition:opacity .8s ease, visibility .8s}
+#loader.hide{opacity:0;visibility:hidden}
+.loader-logo{width:130px;height:130px;border-radius:50%;overflow:hidden;box-shadow:0 0 60px var(--glow);animation:pulse 1.5s infinite}
+.loader-logo img{width:100%;height:100%;object-fit:cover}
+.loader-text{margin-top:20px;font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.4rem;color:var(--orange);text-shadow:0 0 20px var(--glow)}
+.loader-bar{margin-top:20px;width:200px;height:3px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.loader-bar span{display:block;height:100%;width:0;background:var(--grad);animation:load 2s ease forwards}
+@keyframes load{to{width:100%}}
+@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 60px var(--glow)}50%{transform:scale(1.08);box-shadow:0 0 90px var(--glow)}}
+
+/* ---------- Scroll progress ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:9998;box-shadow:0 0 12px var(--orange)}
+
+/* ---------- Navbar ---------- */
+nav{position:fixed;top:0;left:0;width:100%;padding:18px 6%;display:flex;align-items:center;justify-content:space-between;z-index:1000;transition:.4s ease;background:transparent}
+nav.scrolled{background:rgba(20,18,22,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:12px 6%;border-bottom:1px solid rgba(244,166,28,.15)}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{width:48px;height:48px;border-radius:50%;object-fit:cover;box-shadow:0 0 20px var(--glow)}
+.nav-logo span{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.2rem;color:var(--orange)}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-weight:500;font-size:.95rem;position:relative;transition:.3s;color:var(--text)}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--grad);transition:.3s}
+.nav-links a:hover{color:var(--orange)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--grad);padding:11px 24px;border-radius:50px;font-weight:600;color:#fff!important;box-shadow:0 8px 25px rgba(244,166,28,.35);transition:.3s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(244,166,28,.55)}
+.nav-cta::after{display:none}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{width:28px;height:3px;background:var(--orange);border-radius:3px;transition:.3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+@media(max-width:900px){
+  .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:280px;background:rgba(20,18,22,.95);backdrop-filter:blur(25px);flex-direction:column;justify-content:center;transition:.4s;padding:40px}
+  .nav-links.open{right:0}
+  .hamburger{display:flex}
+}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 6% 60px;overflow:hidden;background:radial-gradient(ellipse at top,#2a1e10 0%,var(--dark) 60%)}
+.hero::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(circle at 20% 30%,rgba(244,166,28,.25),transparent 40%),
+  radial-gradient(circle at 80% 70%,rgba(192,57,43,.25),transparent 40%),
+  radial-gradient(circle at 50% 50%,rgba(124,179,66,.12),transparent 50%);
+  animation:bgmove 12s ease-in-out infinite alternate}
+@keyframes bgmove{0%{transform:scale(1) rotate(0)}100%{transform:scale(1.2) rotate(6deg)}}
+
+#particles{position:absolute;inset:0;z-index:0}
+.float-icon{position:absolute;font-size:2.5rem;opacity:.15;animation:float 8s ease-in-out infinite}
+.float-icon:nth-child(1){top:15%;left:8%;animation-delay:0s}
+.float-icon:nth-child(2){top:25%;right:10%;animation-delay:1.5s;font-size:3rem}
+.float-icon:nth-child(3){bottom:20%;left:12%;animation-delay:3s;font-size:2rem}
+.float-icon:nth-child(4){bottom:15%;right:15%;animation-delay:4.5s}
+.float-icon:nth-child(5){top:50%;left:5%;animation-delay:2s}
+.float-icon:nth-child(6){top:60%;right:5%;animation-delay:5s;font-size:2.8rem}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-30px) rotate(15deg)}}
+
+.hero-content{position:relative;z-index:2;max-width:1000px}
+.hero-logo{width:170px;height:170px;border-radius:50%;overflow:hidden;margin:0 auto 30px;box-shadow:0 0 80px var(--glow);animation:pulse 3s infinite;border:3px solid var(--orange)}
+.hero-logo img{width:100%;height:100%;object-fit:cover}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,8rem);line-height:.95;letter-spacing:.3rem;background:linear-gradient(135deg,var(--orange) 0%,var(--red) 50%,var(--orange) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 60px rgba(244,166,28,.3);animation:shine 4s linear infinite;background-size:200% auto}
+@keyframes shine{to{background-position:200% center}}
+.hero .slogan{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,2.5vw,2rem);letter-spacing:.4rem;color:var(--cream);margin-top:15px;opacity:.9}
+.hero .sub{margin-top:15px;color:var(--muted);font-size:1rem;max-width:600px;margin-inline:auto}
+.hero-btns{margin-top:40px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+
+.btn{position:relative;padding:16px 38px;border-radius:50px;font-weight:600;font-size:1rem;letter-spacing:.05rem;overflow:hidden;transition:.3s;display:inline-flex;align-items:center;gap:10px}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 10px 30px rgba(244,166,28,.4)}
+.btn-primary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 15px 45px rgba(244,166,28,.6)}
+.btn-outline{background:rgba(255,255,255,.05);border:2px solid var(--orange);color:var(--orange);backdrop-filter:blur(10px)}
+.btn-outline:hover{background:var(--orange);color:var(--dark);transform:translateY(-3px) scale(1.03);box-shadow:0 15px 45px rgba(244,166,28,.5)}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:ripple .7s linear;pointer-events:none}
+@keyframes ripple{to{transform:scale(4);opacity:0}}
+
+/* ---------- Sections ---------- */
+section{padding:110px 6%;position:relative}
+.section-title{text-align:center;margin-bottom:60px}
+.section-title .kicker{color:var(--orange);font-weight:600;letter-spacing:.3rem;font-size:.85rem;text-transform:uppercase}
+.section-title h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:.15rem;margin-top:10px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.section-title p{margin-top:15px;color:var(--muted);max-width:600px;margin-inline:auto}
+
+/* Divider */
+.divider{display:flex;align-items:center;justify-content:center;gap:20px;color:var(--orange);opacity:.5;margin:20px auto}
+.divider::before,.divider::after{content:'';height:1px;width:80px;background:linear-gradient(90deg,transparent,var(--orange),transparent)}
+
+/* ---------- About ---------- */
+#about{background:linear-gradient(180deg,var(--dark) 0%,#1a1518 100%)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+.about-visual{position:relative;height:450px;border-radius:30px;overflow:hidden;background:radial-gradient(circle,rgba(244,166,28,.2),transparent 70%);display:flex;align-items:center;justify-content:center}
+.about-visual .big-logo{width:100%;height:100%;object-fit:contain;padding:40px;filter:drop-shadow(0 20px 60px rgba(244,166,28,.4));animation:floaty 6s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.about-text h3{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:.15rem;color:var(--orange);margin-bottom:20px}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:15px}
+.about-cards{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.about-card{background:rgba(255,255,255,.04);border:1px solid rgba(244,166,28,.2);backdrop-filter:blur(10px);padding:20px;border-radius:18px;transition:.3s}
+.about-card:hover{transform:translateY(-5px);border-color:var(--orange);box-shadow:0 10px 30px rgba(244,166,28,.2)}
+.about-card .ico{font-size:2rem;margin-bottom:10px}
+.about-card h4{font-weight:700;margin-bottom:5px;color:var(--cream)}
+.about-card p{font-size:.85rem;color:var(--muted);margin:0}
+
+/* ---------- Menu ---------- */
+#menu{background:var(--dark)}
+.menu-controls{max-width:1000px;margin:0 auto 40px;display:flex;flex-direction:column;gap:20px;align-items:center}
+.search-box{width:100%;max-width:500px;position:relative}
+.search-box input{width:100%;padding:15px 20px 15px 50px;background:rgba(255,255,255,.05);border:1px solid rgba(244,166,28,.3);border-radius:50px;color:var(--text);font-family:inherit;font-size:.95rem;backdrop-filter:blur(10px);outline:none;transition:.3s}
+.search-box input:focus{border-color:var(--orange);box-shadow:0 0 20px rgba(244,166,28,.3)}
+.search-box::before{content:'🔍';position:absolute;left:20px;top:50%;transform:translateY(-50%);font-size:1.1rem}
+.filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.filter-btn{padding:10px 22px;border-radius:50px;background:rgba(255,255,255,.05);border:1px solid rgba(244,166,28,.25);color:var(--muted);font-weight:600;font-size:.85rem;letter-spacing:.05rem;transition:.3s}
+.filter-btn:hover,.filter-btn.active{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 20px rgba(244,166,28,.4)}
+
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px;max-width:1300px;margin:0 auto}
+.food-card{background:rgba(255,255,255,.04);backdrop-filter:blur(15px);border:1px solid rgba(244,166,28,.15);border-radius:24px;overflow:hidden;transition:.4s cubic-bezier(.2,.9,.3,1.4);position:relative;display:flex;flex-direction:column}
+.food-card:hover{transform:translateY(-12px) scale(1.02);border-color:var(--orange);box-shadow:0 25px 60px rgba(244,166,28,.25)}
+.food-card::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:.4s;pointer-events:none;border-radius:24px}
+.food-card:hover::before{opacity:.05}
+.food-img{height:200px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(244,166,28,.15),rgba(192,57,43,.15));font-size:5rem}
+.food-img .emoji{filter:drop-shadow(0 8px 20px rgba(0,0,0,.5));transition:.5s;transform:scale(1)}
+.food-card:hover .food-img .emoji{transform:scale(1.15) rotate(-8deg)}
+.badge{position:absolute;top:15px;left:15px;padding:5px 12px;background:var(--red);color:#fff;font-size:.7rem;font-weight:700;border-radius:50px;letter-spacing:.05rem;text-transform:uppercase;box-shadow:0 4px 12px rgba(192,57,43,.4)}
+.badge.hot{background:var(--red)}
+.badge.new{background:var(--green)}
+.food-body{padding:22px;flex:1;display:flex;flex-direction:column;gap:12px}
+.food-body h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.15rem;color:var(--cream)}
+.food-body .desc{color:var(--muted);font-size:.85rem;flex:1}
+.food-foot{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px dashed rgba(244,166,28,.2)}
+.price{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--orange);letter-spacing:.05rem}
+.order-btn{background:var(--grad);color:#fff;padding:10px 18px;border-radius:50px;font-size:.8rem;font-weight:600;letter-spacing:.05rem;transition:.3s;box-shadow:0 6px 18px rgba(244,166,28,.35);display:inline-flex;align-items:center;gap:6px}
+.order-btn:hover{transform:scale(1.08);box-shadow:0 10px 28px rgba(244,166,28,.55)}
+
+/* ---------- Why Us ---------- */
+#why{background:linear-gradient(180deg,var(--dark) 0%,#1a1518 100%)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px;max-width:1300px;margin:0 auto}
+.why-card{padding:35px 25px;background:rgba(255,255,255,.04);backdrop-filter:blur(10px);border:1px solid rgba(244,166,28,.15);border-radius:20px;text-align:center;transition:.4s;position:relative;overflow:hidden}
+.why-card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(244,166,28,.1),transparent);transition:.6s}
+.why-card:hover::before{left:100%}
+.why-card:hover{transform:translateY(-8px);border-color:var(--orange);box-shadow:0 15px 40px rgba(244,166,28,.2)}
+.why-card .icon{font-size:3rem;margin-bottom:15px;display:inline-block;transition:.4s}
+.why-card:hover .icon{transform:scale(1.2) rotate(-10deg)}
+.why-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.1rem;color:var(--cream);margin-bottom:8px}
+.why-card p{color:var(--muted);font-size:.85rem}
+
+/* ---------- Reviews ---------- */
+#reviews{background:var(--dark)}
+.reviews-wrap{max-width:900px;margin:0 auto;position:relative;overflow:hidden;border-radius:24px}
+.reviews-track{display:flex;transition:transform .6s ease}
+.review{min-width:100%;padding:50px 40px;background:rgba(255,255,255,.04);backdrop-filter:blur(15px);border:1px solid rgba(244,166,28,.2);border-radius:24px;text-align:center}
+.review .stars{color:var(--orange);font-size:1.2rem;letter-spacing:.2rem;margin-bottom:15px}
+.review p{font-size:1.05rem;line-height:1.7;color:var(--cream);font-style:italic;max-width:600px;margin:0 auto 20px}
+.review .who{font-weight:700;color:var(--orange);letter-spacing:.05rem}
+.review .role{color:var(--muted);font-size:.85rem}
+.review-dots{display:flex;justify-content:center;gap:10px;margin-top:25px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(244,166,28,.3);cursor:pointer;transition:.3s}
+.dot.active{background:var(--orange);width:30px;border-radius:5px}
+
+/* ---------- Gallery ---------- */
+#gallery{background:linear-gradient(180deg,#1a1518,var(--dark))}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;max-width:1300px;margin:0 auto}
+.g-item{aspect-ratio:1;border-radius:20px;overflow:hidden;position:relative;background:linear-gradient(135deg,rgba(244,166,28,.15),rgba(192,57,43,.15));display:flex;align-items:center;justify-content:center;font-size:5rem;cursor:pointer;transition:.4s;border:1px solid rgba(244,166,28,.15)}
+.g-item:nth-child(3n){aspect-ratio:1/1.3}
+.g-item:hover{transform:scale(1.05);box-shadow:0 20px 50px rgba(244,166,28,.3);border-color:var(--orange)}
+.g-item .emoji{transition:.5s}
+.g-item:hover .emoji{transform:scale(1.3) rotate(10deg)}
+.g-item .overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.8));display:flex;align-items:flex-end;justify-content:center;padding:20px;opacity:0;transition:.4s;color:var(--cream);font-weight:600;letter-spacing:.05rem;text-align:center}
+.g-item:hover .overlay{opacity:1}
+
+/* ---------- Stats ---------- */
+#stats{background:linear-gradient(135deg,rgba(244,166,28,.08),rgba(192,57,43,.08)),var(--dark);border-top:1px solid rgba(244,166,28,.1);border-bottom:1px solid rgba(244,166,28,.1)}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;max-width:1200px;margin:0 auto;text-align:center}
+.stat h3{font-family:'Bebas Neue',sans-serif;font-size:4rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.05rem}
+.stat p{color:var(--muted);letter-spacing:.1rem;font-size:.85rem;text-transform:uppercase;font-weight:600}
+
+/* ---------- Contact ---------- */
+#contact{background:var(--dark)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1200px;margin:0 auto}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.contact-card{padding:40px;background:rgba(255,255,255,.04);backdrop-filter:blur(15px);border:1px solid rgba(244,166,28,.2);border-radius:24px}
+.contact-card h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.1rem;color:var(--orange);margin-bottom:25px}
+.info-row{display:flex;align-items:center;gap:15px;padding:15px 0;border-bottom:1px dashed rgba(244,166,28,.15)}
+.info-row:last-child{border:none}
+.info-row .ico{width:45px;height:45px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.info-row .txt strong{display:block;color:var(--cream);margin-bottom:3px}
+.info-row .txt span{color:var(--muted);font-size:.9rem}
+.map-card{padding:0;overflow:hidden}
+.map-card iframe{width:100%;height:100%;min-height:400px;border:none;filter:invert(.9) hue-rotate(180deg) saturate(.7)}
+.contact-wa{margin-top:25px;display:inline-flex;align-items:center;gap:10px;padding:15px 30px;background:#25d366;color:#fff;border-radius:50px;font-weight:600;transition:.3s;box-shadow:0 8px 25px rgba(37,211,102,.4)}
+.contact-wa:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 15px 40px rgba(37,211,102,.6)}
+
+/* ---------- WhatsApp Float ---------- */
+.wa-float{position:fixed;bottom:25px;right:25px;width:65px;height:65px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;box-shadow:0 10px 30px rgba(37,211,102,.6);z-index:999;animation:waPulse 2s infinite;transition:.3s}
+.wa-float:hover{transform:scale(1.1)}
+@keyframes waPulse{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.7),0 10px 30px rgba(37,211,102,.6)}50%{box-shadow:0 0 0 20px rgba(37,211,102,0),0 10px 30px rgba(37,211,102,.6)}}
+.wa-float .tooltip{position:absolute;right:80px;background:var(--dark2);color:var(--cream);padding:8px 14px;border-radius:10px;font-size:.8rem;white-space:nowrap;opacity:0;transform:translateX(10px);transition:.3s;pointer-events:none;border:1px solid rgba(244,166,28,.3)}
+.wa-float:hover .tooltip{opacity:1;transform:translateX(0)}
+
+/* Back to top */
+.back-top{position:fixed;bottom:100px;right:32px;width:48px;height:48px;background:var(--grad);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;opacity:0;visibility:hidden;transition:.3s;z-index:999;box-shadow:0 8px 25px rgba(244,166,28,.5)}
+.back-top.show{opacity:1;visibility:visible}
+.back-top:hover{transform:translateY(-4px)}
+
+/* ---------- Footer ---------- */
+footer{background:#0a0a0c;padding:60px 6% 30px;border-top:1px solid rgba(244,166,28,.15)}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+@media(max-width:800px){.footer-grid{grid-template-columns:1fr;text-align:center}}
+.footer-brand img{width:60px;height:60px;border-radius:50%;box-shadow:0 0 25px var(--glow);margin-bottom:15px}
+.footer-brand h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.2rem;color:var(--orange);margin-bottom:10px}
+.footer-brand p{color:var(--muted);font-size:.9rem;line-height:1.7;max-width:400px}
+.footer-col h4{font-family:'Bebas Neue',sans-serif;color:var(--cream);letter-spacing:.15rem;margin-bottom:15px;font-size:1.1rem}
+.footer-col a{display:block;color:var(--muted);font-size:.9rem;padding:5px 0;transition:.3s}
+.footer-col a:hover{color:var(--orange);transform:translateX(4px)}
+.social{display:flex;gap:12px;margin-top:20px}
+@media(max-width:800px){.social{justify-content:center}}
+.social a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid rgba(244,166,28,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:.3s;padding:0}
+.social a:hover{background:var(--grad);border-color:transparent;transform:translateY(-4px);box-shadow:0 10px 25px rgba(244,166,28,.4)}
+.copyright{max-width:1200px;margin:40px auto 0;padding-top:25px;border-top:1px solid rgba(244,166,28,.1);text-align:center;color:var(--muted);font-size:.85rem}
+.copyright .heart{color:var(--red);animation:heart 1.5s infinite}
+@keyframes heart{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.show{opacity:1;transform:translateY(0)}
+
+/* Blobs */
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.35;z-index:0;pointer-events:none;animation:blob 20s ease-in-out infinite}
+.blob.b1{width:400px;height:400px;background:var(--orange);top:20%;left:-10%}
+.blob.b2{width:350px;height:350px;background:var(--red);bottom:10%;right:-10%;animation-delay:5s}
+@keyframes blob{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,-30px) scale(1.15)}}
+
+/* Lightbox */
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:9999;padding:40px}
+#lightbox.open{display:flex}
+#lightbox .lb-content{background:linear-gradient(135deg,rgba(244,166,28,.2),rgba(192,57,43,.2));border:2px solid var(--orange);border-radius:30px;padding:60px;max-width:500px;text-align:center}
+#lightbox .lb-emoji{font-size:10rem;filter:drop-shadow(0 15px 30px rgba(0,0,0,.5))}
+#lightbox h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.15rem;color:var(--orange);margin-top:15px}
+.lb-close{position:absolute;top:30px;right:30px;font-size:2rem;color:var(--orange);cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-logo"><img src="https://i.imgur.com/OeaYUZh.jpeg" alt="Toxic Bite"></div>
+  <div class="loader-text">TOXIC BITE</div>
+  <div class="loader-bar"><span></span></div>
+</div>
+
+<!-- Custom cursor -->
+<div class="cursor-ring"></div>
+<div class="cursor-dot"></div>
+
+<!-- Progress -->
+<div id="progress"></div>
+
+<!-- Navbar -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">
+    <img src="https://i.imgur.com/OeaYUZh.jpeg" alt="Logo">
+    <span>TOXIC BITE</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="https://wa.me/96181961714" class="nav-cta">Order Now</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="float-icon">🍔</div>
+  <div class="float-icon">🍟</div>
+  <div class="float-icon">🌮</div>
+  <div class="float-icon">🥤</div>
+  <div class="float-icon">🍗</div>
+  <div class="float-icon">💀</div>
+  <canvas id="particles"></canvas>
+
+  <div class="hero-content">
+    <div class="hero-logo"><img src="https://i.imgur.com/OeaYUZh.jpeg" alt="Toxic Bite"></div>
+    <h1>TOXIC BITE</h1>
+    <div class="slogan">THE TASTE YOU'LL NEVER FORGET</div>
+    <p class="sub">Crispy, juicy, unforgettable. Handcrafted sandwiches, loaded fries & killer meals — served hot, straight from our kitchen.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn btn-primary">🍔 View Menu</a>
+      <a href="https://wa.me/96181961714?text=Hello%20TOXIC%20BITE!%20I%27d%20like%20to%20place%20an%20order." class="btn btn-outline">📱 Order Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="blob b1"></div>
+  <div class="section-title reveal">
+    <div class="kicker">About Us</div>
+    <h2>Bite Into Legend</h2>
+    <div class="divider">💀 🍔 💀</div>
+    <p>Where flavor gets dangerously good.</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <img src="https://i.imgur.com/OeaYUZh.jpeg" alt="Toxic Bite Logo" class="big-logo">
+    </div>
+    <div class="about-text reveal">
+      <h3>Our Story</h3>
+      <p>Born from a passion for bold flavors and street-food culture, <strong style="color:var(--orange)">TOXIC BITE</strong> serves up crispy, mouth-watering sandwiches and meals crafted with fresh, high-quality ingredients — every single day.</p>
+      <p>From our signature crispy zinger to our loaded fries, we don't just make fast food — we make food that hits different. Warning: highly addictive.</p>
+      <div class="about-cards">
+        <div class="about-card"><div class="ico">🥩</div><h4>Fresh Daily</h4><p>Prepared fresh every morning.</p></div>
+        <div class="about-card"><div class="ico">🔥</div><h4>Signature Taste</h4><p>Recipes you won't forget.</p></div>
+        <div class="about-card"><div class="ico">⚡</div><h4>Fast Service</h4><p>Ready in minutes.</p></div>
+        <div class="about-card"><div class="ico">💛</div><h4>Made with Love</h4><p>Every bite matters.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu">
+  <div class="blob b2"></div>
+  <div class="section-title reveal">
+    <div class="kicker">Our Menu</div>
+    <h2>Killer Flavors</h2>
+    <div class="divider">🔥 🍟 🔥</div>
+    <p>Handpicked favorites that will haunt your cravings.</p>
+  </div>
+
+  <div class="menu-controls reveal">
+    <div class="search-box"><input type="text" id="search" placeholder="Search your favorite bite..."></div>
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="sandwiches">🥙 Sandwiches</button>
+      <button class="filter-btn" data-filter="special">🔥 Special</button>
+      <button class="filter-btn" data-filter="meals">🍗 Meals</button>
+    </div>
+  </div>
+
+  <div class="menu-grid" id="menuGrid"></div>
+</section>
+
+<!-- Why Us -->
+<section id="why">
+  <div class="section-title reveal">
+    <div class="kicker">Why Choose Us</div>
+    <h2>The Toxic Advantage</h2>
+    <div class="divider">⚡ 💀 ⚡</div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal"><div class="icon">🥬</div><h4>Fresh Ingredients</h4><p>Sourced daily from trusted suppliers.</p></div>
+    <div class="why-card reveal"><div class="icon">🚀</div><h4>Fast Delivery</h4><p>Hot & fast to your door.</p></div>
+    <div class="why-card reveal"><div class="icon">💰</div><h4>Best Prices</h4><p>Premium taste, honest prices.</p></div>
+    <div class="why-card reveal"><div class="icon">🔥</div><h4>Premium Taste</h4><p>Signature recipes only here.</p></div>
+    <div class="why-card reveal"><div class="icon">☀️</div><h4>Daily Fresh</h4><p>Never frozen. Always fresh.</p></div>
+    <div class="why-card reveal"><div class="icon">🏆</div><h4>High Quality</h4><p>Standards above the rest.</p></div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews">
+  <div class="section-title reveal">
+    <div class="kicker">Reviews</div>
+    <h2>What They Say</h2>
+    <div class="divider">⭐ ⭐ ⭐</div>
+  </div>
+  <div class="reviews-wrap reveal">
+    <div class="reviews-track" id="reviewsTrack">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"The Zinger sandwich is absolutely INSANE. Crispy, spicy, and packed with flavor. TOXIC BITE has ruined all other fast food for me!"</p>
+        <div class="who">Karim H.</div>
+        <div class="role">Regular Customer</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"Loaded Fries are a religious experience. I dream about them. Best in Lebanon, hands down. Fast delivery too!"</p>
+        <div class="who">Layla M.</div>
+        <div class="role">Food Blogger</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"Crispy meal 3 pieces = my weekly ritual. The chicken is juicy inside and crunchy outside. Absolute perfection every time."</p>
+        <div class="who">Ahmad K.</div>
+        <div class="role">Loyal Fan</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"The Special Taouk changed my life. That marinade, that char... TOXIC BITE knows what they're doing. 10/10!"</p>
+        <div class="who">Sara T.</div>
+        <div class="role">Foodie</div>
+      </div>
+    </div>
+    <div class="review-dots" id="reviewDots"></div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+  <div class="section-title reveal">
+    <div class="kicker">Gallery</div>
+    <h2>Feast Your Eyes</h2>
+    <div class="divider">📸 🍔 📸</div>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<!-- Stats -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat reveal"><h3 data-count="1000">0</h3><p>Happy Customers</p></div>
+    <div class="stat reveal"><h3 data-count="500">0</h3><p>Orders / Week</p></div>
+    <div class="stat reveal"><h3>5★</h3><p>Customer Rating</p></div>
+    <div class="stat reveal"><h3 data-count="100">0</h3><p>% Fresh</p></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="section-title reveal">
+    <div class="kicker">Contact</div>
+    <h2>Get In Touch</h2>
+    <div class="divider">📞 💀 📞</div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card reveal">
+      <h3>Reach Us</h3>
+      <div class="info-row">
+        <div class="ico">📞</div>
+        <div class="txt"><strong>Phone</strong><span>+961 81 961 714</span></div>
+      </div>
+      <div class="info-row">
+        <div class="ico">💬</div>
+        <div class="txt"><strong>WhatsApp</strong><span>+961 81 961 714</span></div>
+      </div>
+      <div class="info-row">
+        <div class="ico">🕒</div>
+        <div class="txt"><strong>Opening Hours</strong><span>Every day · 11:00 AM – 12:00 AM</span></div>
+      </div>
+      <div class="info-row">
+        <div class="ico">📍</div>
+        <div class="txt"><strong>Location</strong><span>Lebanon</span></div>
+      </div>
+      <a href="https://wa.me/96181961714?text=Hello%20TOXIC%20BITE!" class="contact-wa">💬 Chat on WhatsApp</a>
+    </div>
+    <div class="contact-card map-card reveal">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d211557.6!2d35.4!3d33.88!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sLebanon!5e0!3m2!1sen!2s!4v1" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/96181961714?text=Hello%20TOXIC%20BITE!%20I%27d%20like%20to%20order." class="wa-float" aria-label="WhatsApp">
+  💬
+  <span class="tooltip">Order on WhatsApp</span>
+</a>
+
+<!-- Back to top -->
+<button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <span class="lb-close" onclick="closeLightbox()">✕</span>
+  <div class="lb-content">
+    <div class="lb-emoji" id="lbEmoji">🍔</div>
+    <h3 id="lbTitle">Toxic Bite</h3>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://i.imgur.com/OeaYUZh.jpeg" alt="Toxic Bite">
+      <h3>TOXIC BITE</h3>
+      <p>The taste you'll never forget. Crispy, juicy and addictively good sandwiches, meals and loaded fries — made fresh every day.</p>
+      <div class="social">
+        <a href="#" aria-label="Facebook">📘</a>
+        <a href="#" aria-label="Instagram">📸</a>
+        <a href="#" aria-label="TikTok">🎵</a>
+        <a href="https://wa.me/96181961714" aria-label="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+96181961714">+961 81 961 714</a>
+      <a href="https://wa.me/96181961714">WhatsApp Order</a>
+      <a href="#">Lebanon</a>
+      <a href="#">Open Daily</a>
+    </div>
+  </div>
+  <div class="copyright">
+    © 2025 TOXIC BITE · All Rights Reserved · Made with <span class="heart">❤</span> for great food lovers
+  </div>
+</footer>
+
+<script>
+/* ---------- Loader ---------- */
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('hide'),1400);
+});
+
+/* ---------- Custom Cursor ---------- */
+const dot=document.querySelector('.cursor-dot');
+const ring=document.querySelector('.cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;
+});
+function loop(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(loop);}
+loop();
+document.querySelectorAll('a,button,.food-card,.g-item,input').forEach(el=>{
+  el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
+});
+
+/* ---------- Navbar ---------- */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',scrollY>50);
+  const p=(scrollY/(document.body.scrollHeight-innerHeight))*100;
+  document.getElementById('progress').style.width=p+'%';
+  document.getElementById('backTop').classList.toggle('show',scrollY>400);
+});
+const ham=document.getElementById('hamburger'),nl=document.getElementById('navLinks');
+ham.addEventListener('click',()=>{ham.classList.toggle('active');nl.classList.toggle('open');});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('active');nl.classList.remove('open');}));
+
+/* ---------- Menu Data ---------- */
+const menu=[
+  {name:'ساندويش طاووق', en:'Taouk Sandwich', price:'350 ل.ل', cat:'sandwiches', emoji:'🥙', desc:'Grilled marinated chicken, garlic sauce, pickles.', badge:''},
+  {name:'ساندويتش شاورما', en:'Shawarma Sandwich', price:'400 ل.ل', cat:'sandwiches', emoji:'🌯', desc:'Slow-roasted chicken shawarma, garlic & fries.', badge:'HOT'},
+  {name:'ساندويش بطاطا', en:'Potato Sandwich', price:'200 ل.ل', cat:'sandwiches', emoji:'🥔', desc:'Crispy golden fries in soft bread with sauce.', badge:''},
+  {name:'ساندويتش زينجر', en:'Zinger Sandwich', price:'400 ل.ل', cat:'sandwiches', emoji:'🍔', desc:'Crispy spicy chicken fillet with fresh toppings.', badge:'HOT'},
+  {name:'SPECIAL طاووق', en:'Special Taouk', price:'450 ل.ل', cat:'special', emoji:'🔥', desc:'Our signature loaded taouk with special sauce.', badge:'NEW'},
+  {name:'Loaded Fries', en:'Loaded Fries', price:'450 ل.ل', cat:'special', emoji:'🍟', desc:'Crispy fries loaded with cheese, meat & sauces.', badge:'HOT'},
+  {name:'CRISPY MEAL 3 PIECES', en:'Crispy Meal 3 Pieces', price:'450 ل.ل', cat:'meals', emoji:'🍗', desc:'3 crispy chicken pieces, fries & drink.', badge:'NEW'},
+];
+
+const grid=document.getElementById('menuGrid');
+function renderMenu(items){
+  grid.innerHTML=items.map(m=>{
+    const text=`Hello TOXIC BITE!%0A%0AI'd like to order:%0A${encodeURIComponent(m.name)} (${m.en})%0A%0APrice: ${encodeURIComponent(m.price)}%0A%0AThank you!`;
+    return `<div class="food-card reveal" data-cat="${m.cat}">
+      <div class="food-img">
+        ${m.badge?`<span class="badge ${m.badge.toLowerCase()}">${m.badge}</span>`:''}
+        <span class="emoji">${m.emoji}</span>
+      </div>
+      <div class="food-body">
+        <h3>${m.name}</h3>
+        <p class="desc">${m.desc}</p>
+        <div class="food-foot">
+          <span class="price">${m.price}</span>
+          <a href="https://wa.me/96181961714?text=${text}" class="order-btn">Order 💬</a>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  observeReveal();
+}
+renderMenu(menu);
+
+/* Filters */
+document.querySelectorAll('.filter-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    const f=b.dataset.filter;
+    renderMenu(f==='all'?menu:menu.filter(m=>m.cat===f));
+  });
+});
+/* Search */
+document.getElementById('search').addEventListener('input',e=>{
+  const q=e.target.value.toLowerCase();
+  renderMenu(menu.filter(m=>m.name.toLowerCase().includes(q)||m.en.toLowerCase().includes(q)||m.cat.includes(q)));
+});
+
+/* ---------- Gallery ---------- */
+const galleryItems=[
+  {e:'🍔',t:'Zinger Burger'},{e:'🍟',t:'Loaded Fries'},{e:'🥙',t:'Taouk'},
+  {e:'🌯',t:'Shawarma'},{e:'🍗',t:'Crispy Chicken'},{e:'🥤',t:'Refreshing Drinks'},
+  {e:'🌶️',t:'Hot & Spicy'},{e:'🧀',t:'Cheesy Goodness'}
+];
+document.getElementById('galleryGrid').innerHTML=galleryItems.map(g=>
+  `<div class="g-item reveal" onclick="openLightbox('${g.e}','${g.t}')">
+    <span class="emoji">${g.e}</span>
+    <div class="overlay">${g.t}</div>
+  </div>`
+).join('');
+function openLightbox(e,t){document.getElementById('lbEmoji').textContent=e;document.getElementById('lbTitle').textContent=t;document.getElementById('lightbox').classList.add('open');}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLightbox();});
+
+/* ---------- Reviews Slider ---------- */
+const track=document.getElementById('reviewsTrack');
+const totalReviews=track.children.length;
+const dotsWrap=document.getElementById('reviewDots');
+let curR=0;
+for(let i=0;i<totalReviews;i++){
+  const d=document.createElement('span');d.className='dot'+(i===0?' active':'');
+  d.addEventListener('click',()=>goR(i));
+  dotsWrap.appendChild(d);
+}
+function goR(i){curR=i;track.style.transform=`translateX(-${i*100}%)`;document.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('active',j===i));}
+setInterval(()=>goR((curR+1)%totalReviews),5000);
+
+/* ---------- Counters ---------- */
+const counters=document.querySelectorAll('[data-count]');
+const cObs=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      const el=en.target;const target=+el.dataset.count;let n=0;const step=target/60;
+      const t=setInterval(()=>{n+=step;if(n>=target){n=target;clearInterval(t);}el.textContent=Math.floor(n)+(target>=100?'+':'');},20);
+      cObs.unobserve(el);
+    }
+  });
+});
+counters.forEach(c=>cObs.observe(c));
+
+/* ---------- Reveal ---------- */
+function observeReveal(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('show');obs.unobserve(en.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal:not(.show)').forEach(el=>obs.observe(el));
+}
+observeReveal();
+
+/* ---------- Ripple ---------- */
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.btn,.order-btn,.filter-btn,.nav-cta');
+  if(!b)return;
+  const r=document.createElement('span');r.className='ripple';
+  const rect=b.getBoundingClientRect();const size=Math.max(rect.width,rect.height);
+  r.style.width=r.style.height=size+'px';r.style.left=(e.clientX-rect.left-size/2)+'px';r.style.top=(e.clientY-rect.top-size/2)+'px';
+  b.style.position='relative';b.style.overflow='hidden';b.appendChild(r);
+  setTimeout(()=>r.remove(),700);
+});
+
+/* ---------- Back to top ---------- */
+document.getElementById('backTop').addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+
+/* ---------- Particles ---------- */
+const cvs=document.getElementById('particles');const ctx=cvs.getContext('2d');
+function resizeC(){cvs.width=innerWidth;cvs.height=document.querySelector('.hero').offsetHeight;}
+resizeC();addEventListener('resize',resizeC);
+const parts=[];const COLORS=['#F4A61C','#C0392B','#7CB342','#F6EBD1'];
+for(let i=0;i<60;i++){parts.push({x:Math.random()*cvs.width,y:Math.random()*cvs.height,r:Math.random()*2.5+.5,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,c:COLORS[Math.floor(Math.random()*COLORS.length)]});}
+function draw(){
+  ctx.clearRect(0,0,cvs.width,cvs.height);
+  parts.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>cvs.width)p.vx*=-1;
+    if(p.y<0||p.y>cvs.height)p.vy*=-1;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.c;ctx.globalAlpha=.6;ctx.fill();
+  });
+  ctx.globalAlpha=1;
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>
+```

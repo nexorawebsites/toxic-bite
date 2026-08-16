@@ -32,7 +32,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: 0.1em; margin-top: 10px; color: var(--orange); }
 .section-line { width: 60px; height: 2px; background: var(--orange); margin: 15px auto 0; }
 .section-desc { color: var(--muted); margin-top: 15px; max-width: 500px; margin-inline: auto; }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 14px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 14px; transition: all 0.3s; }
 .btn-primary { background: var(--orange); color: var(--dark); }
 .btn-primary:hover { background: var(--red); color: #fff; }
 .btn-outline { border: 2px solid var(--orange); color: var(--orange); }
@@ -46,7 +46,7 @@ nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; padding: 15px
 .nav-logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
 .nav-logo span { font-family: 'Bebas Neue', sans-serif; color: var(--orange); font-size: 1.4rem; letter-spacing: 0.15em; }
 .nav-links { display: flex; align-items: center; gap: 25px; }
-.nav-links a { color: var(--cream); font-size: 14px; font-weight: 500; }
+.nav-links a { color: var(--cream); font-size: 14px; font-weight: 500; transition: color 0.3s; }
 .nav-links a:hover { color: var(--orange); }
 .nav-links .nav-cta { background: var(--orange); color: var(--dark); padding: 8px 20px; border-radius: 50px; font-weight: 600; }
 .nav-links .nav-cta:hover { background: var(--red); color: #fff; }
@@ -71,23 +71,24 @@ nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; padding: 15px
 .about-text h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.1em; color: var(--orange); margin-bottom: 15px; }
 .about-text p { color: var(--muted); line-height: 1.7; margin-bottom: 12px; font-size: 14px; }
 .about-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.about-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(244,166,28,0.15); border-radius: 12px; padding: 18px; }
+.about-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(244,166,28,0.15); border-radius: 12px; padding: 18px; transition: border-color 0.3s; }
+.about-card:hover { border-color: var(--orange); }
 .about-card h4 { font-weight: 600; color: var(--cream); margin-bottom: 5px; font-size: 13px; }
 .about-card p { color: var(--muted); font-size: 11px; margin: 0; }
 @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
 /* Menu */
 #menu { background: var(--dark); }
-.menu-controls { max-width: 500px; margin: 0 auto 30px; display: flex; flex-direction: column; gap: 15px; align-items: center; }
+.menu-controls { max-width: 600px; margin: 0 auto 30px; display: flex; flex-direction: column; gap: 15px; align-items: center; }
 .search-wrap { width: 100%; position: relative; }
-.search-wrap input { width: 100%; padding: 12px 15px 12px 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(244,166,28,0.2); border-radius: 50px; color: var(--cream); font-size: 14px; outline: none; }
+.search-wrap input { width: 100%; padding: 12px 15px 12px 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(244,166,28,0.2); border-radius: 50px; color: var(--cream); font-size: 14px; outline: none; transition: border-color 0.3s; }
 .search-wrap input:focus { border-color: var(--orange); }
-.search-wrap::before { content: ''; position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; border: 2px solid var(--muted); border-radius: 50%; }
+.search-wrap::before { content: '🔍'; position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-size: 14px; }
 .filters { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-.filter-btn { padding: 8px 16px; border-radius: 50px; background: rgba(255,255,255,0.05); border: 1px solid rgba(244,166,28,0.2); color: var(--muted); font-weight: 600; font-size: 12px; }
+.filter-btn { padding: 8px 16px; border-radius: 50px; background: rgba(255,255,255,0.05); border: 1px solid rgba(244,166,28,0.2); color: var(--muted); font-weight: 600; font-size: 12px; transition: all 0.3s; }
 .filter-btn:hover, .filter-btn.active { background: var(--orange); color: var(--dark); border-color: var(--orange); }
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-.food-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(244,166,28,0.1); border-radius: 16px; overflow: hidden; }
-.food-card:hover { border-color: var(--orange); }
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+.food-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(244,166,28,0.1); border-radius: 16px; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
+.food-card:hover { border-color: var(--orange); transform: translateY(-5px); }
 .food-card-bar { height: 3px; background: var(--orange); }
 .food-card-body { padding: 20px; }
 .food-badge { display: inline-block; padding: 3px 10px; border-radius: 50px; font-size: 10px; font-weight: 700; color: #fff; margin-bottom: 10px; }
@@ -98,14 +99,14 @@ nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; padding: 15px
 .food-card .food-desc { color: var(--muted); font-size: 12px; line-height: 1.5; margin-bottom: 15px; }
 .food-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px dashed rgba(244,166,28,0.15); }
 .food-price { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--orange); }
-.order-btn { background: var(--orange); color: var(--dark); padding: 6px 14px; border-radius: 50px; font-size: 11px; font-weight: 600; }
+.order-btn { background: var(--orange); color: var(--dark); padding: 6px 14px; border-radius: 50px; font-size: 11px; font-weight: 600; transition: all 0.3s; }
 .order-btn:hover { background: var(--red); color: #fff; }
-.no-results { text-align: center; color: var(--muted); padding: 30px; }
+.no-results { text-align: center; color: var(--muted); padding: 30px; grid-column: 1 / -1; }
 /* Why Us */
 #why { background: var(--dark2); }
 .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; max-width: 900px; margin: 0 auto; }
-.why-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(244,166,28,0.1); border-radius: 14px; padding: 25px 15px; text-align: center; }
-.why-card:hover { border-color: var(--orange); }
+.why-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(244,166,28,0.1); border-radius: 14px; padding: 25px 15px; text-align: center; transition: border-color 0.3s, transform 0.3s; }
+.why-card:hover { border-color: var(--orange); transform: translateY(-5px); }
 .why-card h4 { font-family: 'Bebas Neue', sans-serif; color: var(--cream); font-size: 1rem; letter-spacing: 0.05em; margin-bottom: 5px; }
 .why-card p { color: var(--muted); font-size: 11px; }
 /* Reviews */
@@ -116,10 +117,10 @@ nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; padding: 15px
 .review-name { font-weight: 700; color: var(--orange); }
 .review-role { color: var(--muted); font-size: 12px; margin-top: 3px; }
 .review-nav { display: flex; justify-content: center; gap: 10px; margin-top: 25px; }
-.review-arrow { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(244,166,28,0.3); display: flex; align-items: center; justify-content: center; color: var(--orange); font-size: 14px; }
+.review-arrow { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(244,166,28,0.3); display: flex; align-items: center; justify-content: center; color: var(--orange); font-size: 14px; transition: all 0.3s; }
 .review-arrow:hover { background: var(--orange); color: var(--dark); }
 .review-dots { display: flex; justify-content: center; gap: 6px; margin-top: 15px; }
-.review-dot { height: 6px; border-radius: 3px; background: rgba(244,166,28,0.3); border: none; padding: 0; }
+.review-dot { height: 6px; border-radius: 3px; background: rgba(244,166,28,0.3); border: none; padding: 0; cursor: pointer; transition: all 0.3s; }
 .review-dot.active { width: 20px; background: var(--orange); }
 .review-dot:not(.active) { width: 6px; }
 /* Stats */
@@ -142,7 +143,7 @@ nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; padding: 15px
 #contact { background: var(--dark2); }
 .contact-wrap { max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(244,166,28,0.1); border-radius: 16px; padding: 35px; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.contact-item { display: flex; align-items: center; gap: 12px; padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(244,166,28,0.08); border-radius: 10px; }
+.contact-item { display: flex; align-items: center; gap: 12px; padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(244,166,28,0.08); border-radius: 10px; transition: border-color 0.3s; }
 .contact-item:hover { border-color: var(--orange); }
 .contact-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--orange); display: flex; align-items: center; justify-content: center; color: var(--dark); flex-shrink: 0; font-weight: bold; font-size: 14px; }
 .contact-label { font-weight: 600; color: var(--cream); font-size: 13px; }
@@ -158,15 +159,15 @@ footer { background: #0a0a0c; border-top: 1px solid rgba(244,166,28,0.1); paddin
 .footer-brand .brand-row span { font-family: 'Bebas Neue', sans-serif; color: var(--orange); font-size: 1.3rem; letter-spacing: 0.15em; }
 .footer-brand p { color: var(--muted); font-size: 12px; line-height: 1.6; max-width: 300px; }
 .footer-col h4 { font-family: 'Bebas Neue', sans-serif; color: var(--cream); letter-spacing: 0.1em; margin-bottom: 12px; font-size: 1rem; }
-.footer-col a { display: block; color: var(--muted); font-size: 12px; padding: 3px 0; }
+.footer-col a { display: block; color: var(--muted); font-size: 12px; padding: 3px 0; transition: color 0.3s; }
 .footer-col a:hover { color: var(--orange); }
 .copyright { max-width: 1000px; margin: 30px auto 0; padding-top: 20px; border-top: 1px solid rgba(244,166,28,0.1); text-align: center; color: var(--muted); font-size: 11px; }
 @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; text-align: center; } .footer-brand .brand-row { justify-content: center; } .footer-brand p { margin-inline: auto; } }
 /* WhatsApp Float */
-.wa-float { position: fixed; bottom: 20px; right: 20px; z-index: 90; width: 50px; height: 50px; background: var(--wa); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px; }
-.wa-float:hover { background: #1da851; }
+.wa-float { position: fixed; bottom: 20px; right: 20px; z-index: 90; width: 50px; height: 50px; background: var(--wa); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: all 0.3s; }
+.wa-float:hover { background: #1da851; transform: scale(1.1); }
 /* Back To Top */
-.back-top { position: fixed; bottom: 80px; right: 24px; z-index: 90; width: 40px; height: 40px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--dark); font-size: 18px; opacity: 0; visibility: hidden; }
+.back-top { position: fixed; bottom: 80px; right: 24px; z-index: 90; width: 40px; height: 40px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--dark); font-size: 18px; opacity: 0; visibility: hidden; transition: all 0.3s; }
 .back-top.show { opacity: 1; visibility: visible; }
 .back-top:hover { background: var(--red); color: #fff; }
 </style>
@@ -237,8 +238,11 @@ footer { background: #0a0a0c; border-top: 1px solid rgba(244,166,28,0.1); paddin
     <div class="filters">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="sandwiches">Sandwiches</button>
+      <button class="filter-btn" data-filter="burgers">Burgers</button>
       <button class="filter-btn" data-filter="special">Special</button>
       <button class="filter-btn" data-filter="meals">Meals</button>
+      <button class="filter-btn" data-filter="sides">Sides</button>
+      <button class="filter-btn" data-filter="drinks">Drinks</button>
     </div>
   </div>
   <div class="menu-grid" id="menuGrid"></div>
@@ -316,19 +320,19 @@ footer { background: #0a0a0c; border-top: 1px solid rgba(244,166,28,0.1); paddin
   <div class="contact-wrap">
     <div class="contact-grid">
       <a href="tel:+96181961714" class="contact-item">
-        <div class="contact-icon">P</div>
+        <div class="contact-icon">📞</div>
         <div><div class="contact-label">Phone</div><div class="contact-value">+961 81 961 714</div></div>
       </a>
       <a href="https://wa.me/96181961714" target="_blank" class="contact-item">
-        <div class="contact-icon">W</div>
+        <div class="contact-icon">💬</div>
         <div><div class="contact-label">WhatsApp</div><div class="contact-value">+961 81 961 714</div></div>
       </a>
       <div class="contact-item">
-        <div class="contact-icon">H</div>
+        <div class="contact-icon">🕐</div>
         <div><div class="contact-label">Opening Hours</div><div class="contact-value">Every day 11:00 AM - 12:00 AM</div></div>
       </div>
       <a href="https://maps.app.goo.gl/K4cGNPLfwy7WRz418" target="_blank" class="contact-item">
-        <div class="contact-icon">L</div>
+        <div class="contact-icon">📍</div>
         <div><div class="contact-label">Location</div><div class="contact-value">Lebanon</div></div>
       </a>
     </div>
@@ -365,24 +369,54 @@ footer { background: #0a0a0c; border-top: 1px solid rgba(244,166,28,0.1); paddin
   </div>
   <div class="copyright">© 2025 TOXIC BITE. All Rights Reserved.</div>
 </footer>
-<a href="https://wa.me/96181961714?text=Hello%20TOXIC%20BITE!%20I'd%20like%20to%20order." target="_blank" class="wa-float">W</a>
-<button class="back-top" id="backTop">^</button>
+<a href="https://wa.me/96181961714?text=Hello%20TOXIC%20BITE!%20I'd%20like%20to%20order." target="_blank" class="wa-float">💬</a>
+<button class="back-top" id="backTop">↑</button>
 <script>
 var menu = [
+  // Sandwiches
   { nameAr: 'ساندويش طاووق', nameEn: 'Taouk Sandwich', price: '350 ل.ل', cat: 'sandwiches', desc: 'Grilled marinated chicken, garlic sauce, pickles.', badge: '' },
   { nameAr: 'ساندويتش شاورما', nameEn: 'Shawarma Sandwich', price: '400 ل.ل', cat: 'sandwiches', desc: 'Slow-roasted chicken shawarma, garlic and fries.', badge: 'HOT' },
   { nameAr: 'ساندويش بطاطا', nameEn: 'Potato Sandwich', price: '200 ل.ل', cat: 'sandwiches', desc: 'Crispy golden fries in soft bread with sauce.', badge: '' },
   { nameAr: 'ساندويتش زينجر', nameEn: 'Zinger Sandwich', price: '400 ل.ل', cat: 'sandwiches', desc: 'Crispy spicy chicken fillet with fresh toppings.', badge: 'HOT' },
+  { nameAr: 'فهيتا', nameEn: 'Fajita Sandwich', price: '450 ل.ل', cat: 'sandwiches', desc: 'Sizzling chicken fajita with peppers and onions.', badge: 'NEW' },
+  { nameAr: 'تشكن ساب', nameEn: 'Chicken Sub', price: '450 ل.ل', cat: 'sandwiches', desc: 'Loaded chicken sub with fresh veggies and sauce.', badge: '' },
+  
+  // Burgers
+  { nameAr: 'لبنيز برجر', nameEn: 'Lebanese Burger', price: '400 ل.ل', cat: 'burgers', desc: 'Classic Lebanese style burger with special spices.', badge: '' },
+  { nameAr: 'تشيز برجر', nameEn: 'Cheese Burger', price: '450 ل.ل', cat: 'burgers', desc: 'Juicy beef patty with melted cheese.', badge: 'HOT' },
+  { nameAr: 'تشكن برجر', nameEn: 'Chicken Burger', price: '400 ل.ل', cat: 'burgers', desc: 'Crispy chicken patty with fresh toppings.', badge: '' },
+  { nameAr: 'تشيز تشكن برجر', nameEn: 'Cheese Chicken Burger', price: '450 ل.ل', cat: 'burgers', desc: 'Crispy chicken burger with melted cheese.', badge: 'NEW' },
+  
+  // Special
   { nameAr: 'SPECIAL طاووق', nameEn: 'Special Taouk', price: '450 ل.ل', cat: 'special', desc: 'Our signature loaded taouk with special sauce.', badge: 'NEW' },
   { nameAr: 'Loaded Fries', nameEn: 'Loaded Fries', price: '450 ل.ل', cat: 'special', desc: 'Crispy fries loaded with cheese, meat and sauces.', badge: 'HOT' },
-  { nameAr: 'CRISPY MEAL 3 PIECES', nameEn: 'Crispy Meal 3 Pieces', price: '450 ل.ل', cat: 'meals', desc: '3 crispy chicken pieces, fries and drink.', badge: 'NEW' }
+  
+  // Meals
+  { nameAr: 'CRISPY MEAL 3 PIECES', nameEn: 'Crispy Meal 3 Pieces', price: '450 ل.ل', cat: 'meals', desc: '3 crispy chicken pieces, fries and drink.', badge: 'NEW' },
+  { nameAr: 'كونبو', nameEn: 'Combo Meal', price: '200 ل.ل', cat: 'meals', desc: 'Perfect combo deal with your favorite items.', badge: '' },
+  
+  // Sides
+  { nameAr: 'علبة بطاطة صغيرة', nameEn: 'Small Fries Box', price: '200 ل.ل', cat: 'sides', desc: 'Crispy golden fries - small portion.', badge: '' },
+  { nameAr: 'علبة بطاطة كبيرة', nameEn: 'Large Fries Box', price: '400 ل.ل', cat: 'sides', desc: 'Crispy golden fries - large portion.', badge: 'HOT' },
+  
+  // Drinks
+  { nameAr: 'ببسي قزاز', nameEn: 'Pepsi Glass', price: '50 ل.ل', cat: 'drinks', desc: 'Refreshing Pepsi in glass bottle.', badge: '' },
+  { nameAr: 'سفن اب قزاز', nameEn: '7up Glass', price: '50 ل.ل', cat: 'drinks', desc: 'Refreshing 7up in glass bottle.', badge: '' },
+  { nameAr: 'مرندا قزاز', nameEn: 'Miranda Glass', price: '50 ل.ل', cat: 'drinks', desc: 'Refreshing Miranda in glass bottle.', badge: '' },
+  { nameAr: 'لبن', nameEn: 'Laban', price: '90 ل.ل', cat: 'drinks', desc: 'Traditional refreshing laban drink.', badge: '' },
+  { nameAr: 'ببسي تنك', nameEn: 'Pepsi Can', price: '90 ل.ل', cat: 'drinks', desc: 'Refreshing Pepsi in can.', badge: '' },
+  { nameAr: 'سفن تنك', nameEn: '7up Can', price: '90 ل.ل', cat: 'drinks', desc: 'Refreshing 7up in can.', badge: '' },
+  { nameAr: 'مرندا تنك', nameEn: 'Miranda Can', price: '90 ل.ل', cat: 'drinks', desc: 'Refreshing Miranda in can.', badge: '' }
 ];
+
 var reviews = [
   { text: '"The Zinger sandwich is absolutely INSANE. Crispy, spicy, and packed with flavor. TOXIC BITE has ruined all other fast food for me!"', name: 'Karim H.', role: 'Regular Customer' },
   { text: '"Loaded Fries are a religious experience. I dream about them. Best in Lebanon, hands down. Fast delivery too!"', name: 'Layla M.', role: 'Food Blogger' },
   { text: '"Crispy meal 3 pieces = my weekly ritual. The chicken is juicy inside and crunchy outside. Absolute perfection every time."', name: 'Ahmad K.', role: 'Loyal Fan' },
-  { text: '"The Special Taouk changed my life. That marinade, that char... TOXIC BITE knows what they are doing. 10/10!"', name: 'Sara T.', role: 'Foodie' }
+  { text: '"The Special Taouk changed my life. That marinade, that char... TOXIC BITE knows what they are doing. 10/10!"', name: 'Sara T.', role: 'Foodie' },
+  { text: '"Best cheese burger in town! The meat is always fresh and the cheese is perfectly melted. Highly recommend!"', name: 'Omar R.', role: 'Burger Lover' }
 ];
+
 var backTop = document.getElementById('backTop');
 window.addEventListener('scroll', function() {
   backTop.classList.toggle('show', window.scrollY > 300);
@@ -390,15 +424,18 @@ window.addEventListener('scroll', function() {
 backTop.addEventListener('click', function() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
 var ham = document.getElementById('hamburger');
 var nl = document.getElementById('navLinks');
 ham.addEventListener('click', function() { nl.classList.toggle('open'); });
 document.querySelectorAll('.nav-links a').forEach(function(a) {
   a.addEventListener('click', function() { nl.classList.remove('open'); });
 });
+
 var menuGrid = document.getElementById('menuGrid');
 var currentFilter = 'all';
 var currentSearch = '';
+
 function renderMenu() {
   var filtered = menu.filter(function(m) {
     var catMatch = currentFilter === 'all' || m.cat === currentFilter;
@@ -417,6 +454,7 @@ function renderMenu() {
   }).join('');
 }
 renderMenu();
+
 document.querySelectorAll('.filter-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
     document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -425,25 +463,29 @@ document.querySelectorAll('.filter-btn').forEach(function(btn) {
     renderMenu();
   });
 });
+
 document.getElementById('searchInput').addEventListener('input', function(e) {
   currentSearch = e.target.value;
   renderMenu();
 });
+
 var currentReview = 0;
 var reviewStars = document.getElementById('reviewStars');
 var reviewText = document.getElementById('reviewText');
 var reviewName = document.getElementById('reviewName');
 var reviewRole = document.getElementById('reviewRole');
 var reviewDots = document.getElementById('reviewDots');
+
 function showReview(i) {
   currentReview = i;
-  reviewStars.textContent = String.fromCharCode(9733).repeat(5);
+  reviewStars.textContent = '★★★★★';
   reviewText.textContent = reviews[i].text;
   reviewName.textContent = reviews[i].name;
   reviewRole.textContent = reviews[i].role;
   var dots = reviewDots.querySelectorAll('.review-dot');
   dots.forEach(function(d, j) { d.classList.toggle('active', j === i); });
 }
+
 reviews.forEach(function(_, i) {
   var dot = document.createElement('button');
   dot.className = 'review-dot' + (i === 0 ? ' active' : '');
@@ -451,6 +493,7 @@ reviews.forEach(function(_, i) {
   reviewDots.appendChild(dot);
 });
 showReview(0);
+
 document.getElementById('prevReview').addEventListener('click', function() {
   showReview((currentReview - 1 + reviews.length) % reviews.length);
 });
